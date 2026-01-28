@@ -1,0 +1,10 @@
+functions-framework==3.*
+google-cloud-aiplatform
+twilio
+google-cloud-firestore
+pytest
+fastapi
+uvicorn
+requests
+langchain
+langchain-google-vertexai
