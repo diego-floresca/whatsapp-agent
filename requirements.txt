@@ -1,10 +1,11 @@
 functions-framework==3.*
-google-cloud-aiplatform
-twilio
-google-cloud-firestore
+requests
 pytest
+twilio
 fastapi
 uvicorn
-requests
 langchain
 langchain-google-vertexai
+google-cloud-aiplatform
+google-cloud-storage
+google-cloud-firestore

@@ -11,36 +11,49 @@ llm = ChatVertexAI(
 )
 
 SYSTEM_PROMPT = """
-Eres un asistente experto y amable para una empresa. 
-Tu objetivo es ayudar a los clientes por WhatsApp de manera concisa y útil.
-No uses markdown complejo (negritas ** son permitidas).
-Responde siempre en español neutro.
+Eres un asistente experto y amable de una empresa mexicana.
+Puedes escuchar audios y leer texto.
+Si recibes un audio, escucha atentamente y responde a la duda del usuario.
+Responde siempre en texto en español conciso para WhatsApp.
 """
 
-def generate_ai_response(chat_history: list) -> str:
+def generate_ai_response(chat_history: list, audio_bytes=None, audio_type=None) -> str:
     """
-    Toma el historial de Firestore (lista de dicts), lo convierte 
-    a formato LangChain e invoca a Gemini.
+    Genera respuesta, opcionalmente inyectando audio al prompt.
     """
     try:
         messages = [SystemMessage(content=SYSTEM_PROMPT)]
         
-        # Convertir historial de diccionarios a objetos Message de LangChain
+        # 1. Reconstruir historial de texto previo
         for msg in chat_history:
             role = msg.get("role")
             content = msg.get("content")
-            
+            # Ignoramos mensajes que sean solo marcadores de [AUDIO] para no confundir al modelo
+            if "[AUDIO:" in content: 
+                continue 
+                
             if role == "user":
                 messages.append(HumanMessage(content=content))
             elif role == "ai":
                 messages.append(AIMessage(content=content))
         
-        # Invocamos al modelo
-        print("🤖 Consultando a Vertex AI (Gemini)...")
+        # 2. Si hay audio nuevo, lo agregamos al final como mensaje multimodal
+        if audio_bytes:
+            print("🎙️ Enviando audio a Gemini...")
+            message_content = [
+                {"type": "text", "text": "El usuario envió este audio:"},
+                {
+                    "type": "media",
+                    "mime_type": audio_type or "audio/ogg",
+                    "data": audio_bytes
+                }
+            ]
+            messages.append(HumanMessage(content=message_content))
+            
+        # 3. Invocar modelo
         response = llm.invoke(messages)
-        
         return response.content
         
     except Exception as e:
-        print(f"❌ Error generando respuesta de IA: {e}")
-        return "Lo siento, estoy teniendo problemas técnicos momentáneos."
+        print(f"❌ Error IA: {e}")
+        return "Tuve un problema técnico procesando tu mensaje. ¿Podrías escribirlo?"
