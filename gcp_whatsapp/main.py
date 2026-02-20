@@ -6,7 +6,7 @@ from fastapi import FastAPI, Request, BackgroundTasks
 
 # Imports de servicios
 from gcp_whatsapp.services.firestore_service import get_or_create_user, add_message, get_chat_history
-from gcp_whatsapp.services.messenger_service import send_whatsapp_message
+from gcp_whatsapp.services.messenger_service import send_whatsapp_message,send_whatsapp_audio
 from gcp_whatsapp.services.ai_service import generate_ai_response
 from gcp_whatsapp.services.audio_service import get_audio_url, download_audio_bytes, upload_to_gcs
 
@@ -65,7 +65,7 @@ async def process_incoming_message(payload):
                 add_message(wa_id, "ai", reply)
                 send_whatsapp_message(wa_id, reply)
 
-            # --- CASO 2: AUDIO (NUEVO) ---
+            # --- CASO 2: AUDIO ---
             elif msg_type == "audio":
                 audio_id = message_data.get("audio", {}).get("id")
                 mime_type = message_data.get("audio", {}).get("mime_type", "audio/ogg")

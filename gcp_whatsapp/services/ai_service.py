@@ -1,20 +1,31 @@
 from langchain_google_vertexai import ChatVertexAI
 from langchain_core.messages import HumanMessage, AIMessage, SystemMessage
+from gcp_whatsapp.config.business_info import BUSINESS_CONTEXT
 
 # Configuración del modelo (Gemini Pro es rápido y económico para chat)
-# Vertex AI tomará automáticamente las credenciales de tu entorno (gcloud auth...)
+# Vertex AI tomará automáticamente las credenciales del entorno (gcloud auth...)
 llm = ChatVertexAI(
     model_name="gemini-2.5-flash", # O "gemini-pro" (Flash es más rápido para chat)
     temperature=0.7,
-    max_output_tokens=256, # Respuestas concisas para WhatsApp
-    location="us-central1" # Ajusta a tu región si es necesario
+    max_output_tokens=1024, # Respuestas concisas para WhatsApp
+    location="us-central1" # aun no soporta northamerica-south1
 )
 
-SYSTEM_PROMPT = """
-Eres un asistente experto y amable de una empresa mexicana.
-Puedes escuchar audios y leer texto.
-Si recibes un audio, escucha atentamente y responde a la duda del usuario.
-Responde siempre en texto en español conciso para WhatsApp.
+SYSTEM_PROMPT = f"""
+Eres un asistente virtual experto trabajando para la empresa descrita abajo.
+Tu objetivo es atender a los clientes por WhatsApp, resolver dudas y concretar ventas/citas.
+
+INFORMACIÓN DEL NEGOCIO:
+{BUSINESS_CONTEXT}
+
+REGLAS DE COMPORTAMIENTO:
+1. RESPUESTAS CORTAS: WhatsApp es chat rápido. No escribas emails largos. Máximo 3 párrafos cortos.
+2. PRECIOS: Solo da precios que estén explícitamente en la información. Si no sabes, di "déjame consultarlo con un humano".
+3. FORMATO: Usa **negritas** para precios o datos clave. No uses Markdown complejo (tablas, headers #).
+4. AUDIO: Si te mandan audio, resume lo que entendiste antes de responder.
+5. IDIOMA: Español latino neutro.
+
+Si el usuario pregunta algo fuera de este contexto, responde amablemente que solo puedes ayudar con temas de la empresa.
 """
 
 def generate_ai_response(chat_history: list, audio_bytes=None, audio_type=None) -> str:
