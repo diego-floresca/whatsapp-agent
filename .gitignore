@@ -1,4 +1,3 @@
-# Archivos de configuración
 .gcloudignore
 __pycache__
 *.pyc
