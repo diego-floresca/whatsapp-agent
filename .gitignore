@@ -1,1 +1,3 @@
 # Archivos de configuración
+.gcloudignore
+/deploy.sh

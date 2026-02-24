@@ -1,10 +1,11 @@
+import os
 import time
 from google.cloud import firestore
 from google.api_core.exceptions import NotFound
 
 # --- CONFIGURACIÓN ---
-PROJECT_ID = "lunatic-analytics"
-DATABASE_NAME = "agent-whatsapp-chats-database"
+PROJECT_ID = os.environ.get("PROJECT_ID")
+DATABASE_NAME = os.environ.get("DATABASE_NAME")
 
 # Inicializamos el cliente una sola vez (Singleton pattern implícito)
 # Al estar en GCP (Cloud Run), esto toma las credenciales automáticamente.
