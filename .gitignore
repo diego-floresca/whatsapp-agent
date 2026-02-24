@@ -1,3 +1,10 @@
 # Archivos de configuración
 .gcloudignore
-/deploy.sh
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+.env
+venv_wa/
+deploy.sh
