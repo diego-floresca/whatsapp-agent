@@ -1,0 +1,10 @@
+functions-framework==3.*
+requests
+pytest
+fastapi
+uvicorn
+langchain
+langchain-google-vertexai
+google-cloud-aiplatform
+google-cloud-storage
+google-cloud-firestore
