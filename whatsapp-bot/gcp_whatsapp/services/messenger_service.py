@@ -10,13 +10,13 @@ logger = logging.getLogger(__name__)
  
 META_ACCESS_TOKEN = os.environ.get("META_ACCESS_TOKEN")
 PHONE_NUMBER_ID = os.environ.get("PHONE_NUMBER_ID") 
-META_VERSION = "v24.0"
+META_VERSION = "v25.0"
 
 def send_whatsapp_message(to_number: str, message_body: str):
     """
     Envía un mensaje de texto plano a WhatsApp usando la Graph API de Meta.
     """
-    url = f"https://graph.facebook.com/v19.0/{PHONE_NUMBER_ID}/messages"
+    url = f"https://graph.facebook.com/{META_VERSION}/{PHONE_NUMBER_ID}/messages"
     
     headers = {
         "Authorization": f"Bearer {META_ACCESS_TOKEN}",

@@ -9,6 +9,8 @@ from gcp_whatsapp.services.firestore_service import get_or_create_user, add_mess
 from gcp_whatsapp.services.messenger_service import send_whatsapp_message,send_whatsapp_audio
 from gcp_whatsapp.services.ai_service import generate_ai_response
 from gcp_whatsapp.services.audio_service import get_audio_url, download_audio_bytes, upload_to_gcs
+from gcp_whatsapp.services.image_service import get_image_url, download_image_bytes, upload_image_to_gcs
+# from gcp_whatsapp.services.n8n_service import forward_payload_to_n8n
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -36,6 +38,9 @@ async def receive_whatsapp_event(request: Request, background_tasks: BackgroundT
 
 async def process_incoming_message(payload):
     try:
+        # Reenviamos a n8n primero (fuego y olvido)
+        # forward_payload_to_n8n(payload)
+        
         entry = payload.get("entry", [])[0]
         changes = entry.get("changes", [])[0]
         value = changes.get("value", {})
@@ -88,6 +93,33 @@ async def process_incoming_message(payload):
                         # Recuperamos contexto previo de texto
                         history = get_chat_history(wa_id, limit=5)
                         reply = generate_ai_response(history, audio_bytes=audio_bytes, audio_type=content_type)
+                        
+                        # 5. Responder
+                        add_message(wa_id, "ai", reply)
+                        send_whatsapp_message(wa_id, reply)
+
+            # --- CASO 3: IMAGEN ---
+            elif msg_type == "image":
+                image_id = message_data.get("image", {}).get("id")
+                mime_type = message_data.get("image", {}).get("mime_type", "image/jpeg")
+                logger.info(f"📸 Imagen recibida ID: {image_id}")
+                
+                # 1. Bajar
+                url = get_image_url(image_id)
+                if url:
+                    image_bytes, content_type = download_image_bytes(url)
+                    if image_bytes:
+                        # 2. Subir a GCS
+                        ext = mimetypes.guess_extension(content_type) or ".jpg"
+                        filename = f"{wa_id}_{uuid.uuid4()}{ext}"
+                        gcs_uri = upload_image_to_gcs(image_bytes, filename, content_type)
+                        
+                        # 3. Guardar referencia en Firestore
+                        add_message(wa_id, "user", f"[IMAGEN ENVIADA: {gcs_uri}]", msg_type="image")
+                        
+                        # 4. IA Multimodal
+                        history = get_chat_history(wa_id, limit=5)
+                        reply = generate_ai_response(history, image_bytes=image_bytes, image_type=content_type)
                         
                         # 5. Responder
                         add_message(wa_id, "ai", reply)

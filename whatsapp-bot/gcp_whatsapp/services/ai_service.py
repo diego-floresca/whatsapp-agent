@@ -28,9 +28,9 @@ REGLAS DE COMPORTAMIENTO:
 Si el usuario pregunta algo fuera de este contexto, responde amablemente que solo puedes ayudar con temas de la empresa.
 """
 
-def generate_ai_response(chat_history: list, audio_bytes=None, audio_type=None) -> str:
+def generate_ai_response(chat_history: list, audio_bytes=None, audio_type=None, image_bytes=None, image_type=None) -> str:
     """
-    Genera respuesta, opcionalmente inyectando audio al prompt.
+    Genera respuesta, opcionalmente inyectando audio o imagen al prompt.
     """
     try:
         messages = [SystemMessage(content=SYSTEM_PROMPT)]
@@ -39,8 +39,8 @@ def generate_ai_response(chat_history: list, audio_bytes=None, audio_type=None) 
         for msg in chat_history:
             role = msg.get("role")
             content = msg.get("content")
-            # Ignoramos mensajes que sean solo marcadores de [AUDIO] para no confundir al modelo
-            if "[AUDIO:" in content: 
+            # Ignoramos mensajes que sean solo marcadores de [AUDIO] o [IMAGEN] para no confundir al modelo
+            if "[AUDIO:" in content or "[IMAGEN:" in content: 
                 continue 
                 
             if role == "user":
@@ -60,8 +60,21 @@ def generate_ai_response(chat_history: list, audio_bytes=None, audio_type=None) 
                 }
             ]
             messages.append(HumanMessage(content=message_content))
+        
+        # 3. Si hay imagen nueva, la agregamos como mensaje multimodal
+        if image_bytes:
+            print("📸 Enviando imagen a Gemini...")
+            message_content = [
+                {"type": "text", "text": "El usuario envió esta imagen:"},
+                {
+                    "type": "media", 
+                    "mime_type": image_type or "image/jpeg",
+                    "data": image_bytes
+                }
+            ]
+            messages.append(HumanMessage(content=message_content))
             
-        # 3. Invocar modelo
+        # 4. Invocar modelo
         response = llm.invoke(messages)
         return response.content
         
