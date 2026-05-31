@@ -9,8 +9,8 @@ ENV PIP_ROOT_USER_ACTION=ignore
 WORKDIR /app
 
 # Copiamos requerimientos e instalamos
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY requirements-gcp.txt .
+RUN pip install --no-cache-dir -r requirements-gcp.txt
 
 # Copiamos el código fuente
 COPY . .

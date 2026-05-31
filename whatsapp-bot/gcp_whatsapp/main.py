@@ -10,7 +10,7 @@ from gcp_whatsapp.services.messenger_service import send_whatsapp_message,send_w
 from gcp_whatsapp.services.ai_service import generate_ai_response
 from gcp_whatsapp.services.audio_service import get_audio_url, download_audio_bytes, upload_to_gcs
 from gcp_whatsapp.services.image_service import get_image_url, download_image_bytes, upload_image_to_gcs
-# from gcp_whatsapp.services.n8n_service import forward_payload_to_n8n
+from gcp_whatsapp.services.n8n_service import notify_conversation_closed
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -38,9 +38,6 @@ async def receive_whatsapp_event(request: Request, background_tasks: BackgroundT
 
 async def process_incoming_message(payload):
     try:
-        # Reenviamos a n8n primero (fuego y olvido)
-        # forward_payload_to_n8n(payload)
-        
         entry = payload.get("entry", [])[0]
         changes = entry.get("changes", [])[0]
         value = changes.get("value", {})
@@ -63,12 +60,26 @@ async def process_incoming_message(payload):
                 
                 add_message(wa_id, "user", text_body)
                 
-                # IA solo texto
                 history = get_chat_history(wa_id)
-                reply = generate_ai_response(history)
+                ai_result = generate_ai_response(history)
                 
-                add_message(wa_id, "ai", reply)
-                send_whatsapp_message(wa_id, reply)
+                mensaje = ai_result["mensaje"]
+                estado = ai_result["estado"]
+                tipo_problema = ai_result["tipo_problema"]
+                
+                add_message(wa_id, "ai", mensaje)
+                send_whatsapp_message(wa_id, mensaje)
+                
+                # Cierre de conversación → disparar n8n
+                if estado in ("resuelto", "sin_resolver"):
+                    logger.info(f"🔔 Conversación cerrada [{estado}] — notificando a n8n")
+                    notify_conversation_closed(
+                        wa_id=wa_id,
+                        name=name,
+                        estado=estado,
+                        tipo_problema=tipo_problema,
+                        chat_history=get_chat_history(wa_id)
+                    )
 
             # --- CASO 2: AUDIO ---
             elif msg_type == "audio":
@@ -76,27 +87,35 @@ async def process_incoming_message(payload):
                 mime_type = message_data.get("audio", {}).get("mime_type", "audio/ogg")
                 logger.info(f"🎙️ Audio recibido ID: {audio_id}")
                 
-                # 1. Bajar
                 url = get_audio_url(audio_id)
                 if url:
                     audio_bytes, content_type = download_audio_bytes(url)
                     if audio_bytes:
-                        # 2. Subir a GCS
                         ext = mimetypes.guess_extension(content_type) or ".ogg"
                         filename = f"{wa_id}_{uuid.uuid4()}{ext}"
                         gcs_uri = upload_to_gcs(audio_bytes, filename, content_type)
                         
-                        # 3. Guardar referencia (no el audio) en Firestore
                         add_message(wa_id, "user", f"[AUDIO ENVIADO: {gcs_uri}]", msg_type="audio")
                         
-                        # 4. IA Multimodal (pasamos bytes directos para velocidad)
-                        # Recuperamos contexto previo de texto
                         history = get_chat_history(wa_id, limit=5)
-                        reply = generate_ai_response(history, audio_bytes=audio_bytes, audio_type=content_type)
+                        ai_result = generate_ai_response(history, audio_bytes=audio_bytes, audio_type=content_type)
                         
-                        # 5. Responder
-                        add_message(wa_id, "ai", reply)
-                        send_whatsapp_message(wa_id, reply)
+                        mensaje = ai_result["mensaje"]
+                        estado = ai_result["estado"]
+                        tipo_problema = ai_result["tipo_problema"]
+                        
+                        add_message(wa_id, "ai", mensaje)
+                        send_whatsapp_message(wa_id, mensaje)
+                        
+                        if estado in ("resuelto", "sin_resolver"):
+                            logger.info(f"🔔 Conversación cerrada [{estado}] — notificando a n8n")
+                            notify_conversation_closed(
+                                wa_id=wa_id,
+                                name=name,
+                                estado=estado,
+                                tipo_problema=tipo_problema,
+                                chat_history=get_chat_history(wa_id)
+                            )
 
             # --- CASO 3: IMAGEN ---
             elif msg_type == "image":
@@ -104,25 +123,34 @@ async def process_incoming_message(payload):
                 mime_type = message_data.get("image", {}).get("mime_type", "image/jpeg")
                 logger.info(f"📸 Imagen recibida ID: {image_id}")
                 
-                # 1. Bajar
                 url = get_image_url(image_id)
                 if url:
                     image_bytes, content_type = download_image_bytes(url)
                     if image_bytes:
-                        # 2. Subir a GCS
                         ext = mimetypes.guess_extension(content_type) or ".jpg"
                         filename = f"{wa_id}_{uuid.uuid4()}{ext}"
                         gcs_uri = upload_image_to_gcs(image_bytes, filename, content_type)
                         
-                        # 3. Guardar referencia en Firestore
                         add_message(wa_id, "user", f"[IMAGEN ENVIADA: {gcs_uri}]", msg_type="image")
                         
-                        # 4. IA Multimodal
                         history = get_chat_history(wa_id, limit=5)
-                        reply = generate_ai_response(history, image_bytes=image_bytes, image_type=content_type)
+                        ai_result = generate_ai_response(history, image_bytes=image_bytes, image_type=content_type)
                         
-                        # 5. Responder
-                        add_message(wa_id, "ai", reply)
-                        send_whatsapp_message(wa_id, reply)
+                        mensaje = ai_result["mensaje"]
+                        estado = ai_result["estado"]
+                        tipo_problema = ai_result["tipo_problema"]
+                        
+                        add_message(wa_id, "ai", mensaje)
+                        send_whatsapp_message(wa_id, mensaje)
+                        
+                        if estado in ("resuelto", "sin_resolver"):
+                            logger.info(f"🔔 Conversación cerrada [{estado}] — notificando a n8n")
+                            notify_conversation_closed(
+                                wa_id=wa_id,
+                                name=name,
+                                estado=estado,
+                                tipo_problema=tipo_problema,
+                                chat_history=get_chat_history(wa_id)
+                            )
     except Exception as e:
         logger.error(f"❌ Error procesando: {e}")

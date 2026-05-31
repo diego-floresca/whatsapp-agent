@@ -1,0 +1,6 @@
+requests
+pytest
+fastapi
+uvicorn
+boto3
+anthropic

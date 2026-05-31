@@ -4,6 +4,7 @@ pytest
 fastapi
 uvicorn
 langchain
+httpx
 langchain-google-vertexai
 google-cloud-aiplatform
 google-cloud-storage

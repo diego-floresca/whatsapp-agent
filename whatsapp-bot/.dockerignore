@@ -1,0 +1,26 @@
+# Archivos de entorno y credenciales (¡Súper importante para seguridad!)
+.env
+.env.*
+*.pem
+
+# Entornos virtuales
+venv/
+venv_wa/
+env/
+.env/
+__pycache__/
+*.pyc
+
+# Git
+.git/
+.gitignore
+
+# Archivos de SO
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Archivos de pruebas locales
+test_ai.py
