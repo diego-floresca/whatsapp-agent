@@ -5,7 +5,7 @@ import mimetypes
 from fastapi import FastAPI, Request, BackgroundTasks
 
 # Imports de servicios
-from gcp_whatsapp.services.firestore_service import get_or_create_user, add_message, get_chat_history
+from gcp_whatsapp.services.firestore_service import get_or_create_user, add_message, get_chat_history, get_ai_enabled
 from gcp_whatsapp.services.messenger_service import send_whatsapp_message,send_whatsapp_audio
 from gcp_whatsapp.services.ai_service import generate_ai_response
 from gcp_whatsapp.services.audio_service import get_audio_url, download_audio_bytes, upload_to_gcs
@@ -50,16 +50,24 @@ async def process_incoming_message(payload):
             
             # Aseguramos usuario
             get_or_create_user(phone_number=wa_id, name=name)
-            
+
+            # Verificar si la IA está habilitada para este usuario
+            ai_enabled = get_ai_enabled(wa_id)
+
             msg_type = message_data.get("type")
-            
+
             # --- CASO 1: TEXTO ---
             if msg_type == "text":
                 text_body = message_data.get("text", {}).get("body", "")
                 logger.info(f"📩 Texto de {name}: {text_body}")
-                
+
                 add_message(wa_id, "user", text_body)
-                
+
+                # Si la IA está desactivada, guardamos el mensaje pero no respondemos
+                if not ai_enabled:
+                    logger.info(f"🤖 IA desactivada para {name} — agente humano en control")
+                    return
+
                 history = get_chat_history(wa_id)
                 ai_result = generate_ai_response(history)
                 
@@ -86,7 +94,7 @@ async def process_incoming_message(payload):
                 audio_id = message_data.get("audio", {}).get("id")
                 mime_type = message_data.get("audio", {}).get("mime_type", "audio/ogg")
                 logger.info(f"🎙️ Audio recibido ID: {audio_id}")
-                
+
                 url = get_audio_url(audio_id)
                 if url:
                     audio_bytes, content_type = download_audio_bytes(url)
@@ -94,9 +102,14 @@ async def process_incoming_message(payload):
                         ext = mimetypes.guess_extension(content_type) or ".ogg"
                         filename = f"{wa_id}_{uuid.uuid4()}{ext}"
                         gcs_uri = upload_to_gcs(audio_bytes, filename, content_type)
-                        
+
                         add_message(wa_id, "user", f"[AUDIO ENVIADO: {gcs_uri}]", msg_type="audio")
-                        
+
+                        # Si la IA está desactivada, no respondemos
+                        if not ai_enabled:
+                            logger.info(f"🤖 IA desactivada para {name} — audio guardado, sin respuesta")
+                            return
+
                         history = get_chat_history(wa_id, limit=5)
                         ai_result = generate_ai_response(history, audio_bytes=audio_bytes, audio_type=content_type)
                         
@@ -122,7 +135,7 @@ async def process_incoming_message(payload):
                 image_id = message_data.get("image", {}).get("id")
                 mime_type = message_data.get("image", {}).get("mime_type", "image/jpeg")
                 logger.info(f"📸 Imagen recibida ID: {image_id}")
-                
+
                 url = get_image_url(image_id)
                 if url:
                     image_bytes, content_type = download_image_bytes(url)
@@ -130,9 +143,14 @@ async def process_incoming_message(payload):
                         ext = mimetypes.guess_extension(content_type) or ".jpg"
                         filename = f"{wa_id}_{uuid.uuid4()}{ext}"
                         gcs_uri = upload_image_to_gcs(image_bytes, filename, content_type)
-                        
+
                         add_message(wa_id, "user", f"[IMAGEN ENVIADA: {gcs_uri}]", msg_type="image")
-                        
+
+                        # Si la IA está desactivada, no respondemos
+                        if not ai_enabled:
+                            logger.info(f"🤖 IA desactivada para {name} — imagen guardada, sin respuesta")
+                            return
+
                         history = get_chat_history(wa_id, limit=5)
                         ai_result = generate_ai_response(history, image_bytes=image_bytes, image_type=content_type)
                         

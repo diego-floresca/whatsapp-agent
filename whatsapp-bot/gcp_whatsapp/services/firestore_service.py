@@ -61,6 +61,20 @@ def add_message(phone_number: str, role: str, content: str, msg_type: str = "tex
     # Add genera un ID automático para el documento del mensaje
     messages_ref.add(new_message)
 
+def get_ai_enabled(phone_number: str) -> bool:
+    """
+    Retorna el valor de ai_enabled para el usuario.
+    Si el campo no existe, retorna True (comportamiento por defecto).
+    """
+    user_ref = db.collection("users").document(phone_number)
+    try:
+        doc = user_ref.get()
+        if doc.exists:
+            return doc.to_dict().get("ai_enabled", True)
+    except Exception as e:
+        print(f"Error leyendo ai_enabled: {e}")
+    return True
+
 def get_chat_history(phone_number: str, limit: int = 10):
     """
     Recupera los últimos X mensajes para dárselos de contexto a la IA.
