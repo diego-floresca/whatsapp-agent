@@ -65,7 +65,7 @@ async def process_incoming_message(payload):
                 
                 # IA solo texto
                 history = get_chat_history(wa_id)
-                reply = generate_ai_response(history)
+                reply = generate_ai_response(history, phone_number=wa_id)
                 
                 add_message(wa_id, "ai", reply)
                 send_whatsapp_message(wa_id, reply)
@@ -92,7 +92,7 @@ async def process_incoming_message(payload):
                         # 4. IA Multimodal (pasamos bytes directos para velocidad)
                         # Recuperamos contexto previo de texto
                         history = get_chat_history(wa_id, limit=5)
-                        reply = generate_ai_response(history, audio_bytes=audio_bytes, audio_type=content_type)
+                        reply = generate_ai_response(history, audio_bytes=audio_bytes, audio_type=content_type, phone_number=wa_id)
                         
                         # 5. Responder
                         add_message(wa_id, "ai", reply)
@@ -119,7 +119,7 @@ async def process_incoming_message(payload):
                         
                         # 4. IA Multimodal
                         history = get_chat_history(wa_id, limit=5)
-                        reply = generate_ai_response(history, image_bytes=image_bytes, image_type=content_type)
+                        reply = generate_ai_response(history, image_bytes=image_bytes, image_type=content_type, phone_number=wa_id)
                         
                         # 5. Responder
                         add_message(wa_id, "ai", reply)
