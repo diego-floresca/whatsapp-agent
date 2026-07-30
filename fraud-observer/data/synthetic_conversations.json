@@ -1,0 +1,917 @@
+[
+  {
+    "id": "conv_001",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "necesito que me compartas el código que te llegó al correo para completar la entrega",
+    "messages": [
+      {"sender": "usuario", "text": "Hola, ¿dónde está mi pedido?", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "repartidor", "text": "Buenas, ya voy en camino. Disculpe, la plataforma está caída y no me deja marcar el pedido.", "timestamp": "2026-07-18T14:02:00Z"},
+      {"sender": "usuario", "text": "Ah ok, ¿cuánto falta?", "timestamp": "2026-07-18T14:03:00Z"},
+      {"sender": "repartidor", "text": "Unos 5 minutos. Pero necesito que me compartas el código que te llegó al correo para completar la entrega en el sistema.", "timestamp": "2026-07-18T14:04:00Z"},
+      {"sender": "usuario", "text": "¿Qué código? No me ha llegado nada.", "timestamp": "2026-07-18T14:05:00Z"},
+      {"sender": "repartidor", "text": "Revisa tu correo o SMS, es un código de 6 dígitos de Rappi. Sin ese código no puedo marcar como entregado.", "timestamp": "2026-07-18T14:06:00Z"}
+    ]
+  },
+  {
+    "id": "conv_002",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "soy del equipo de soporte de Rappi, necesito el código OTP que recibiste para verificar tu cuenta",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, soy del equipo de soporte de Rappi. Tu pedido está retenido por un problema de seguridad.", "timestamp": "2026-07-18T15:00:00Z"},
+      {"sender": "usuario", "text": "¿Qué problema? Yo solo quiero mi pedido.", "timestamp": "2026-07-18T15:01:00Z"},
+      {"sender": "repartidor", "text": "Detectamos actividad inusual en tu cuenta. Para desbloquear el pedido necesito el código OTP que recibiste para verificar tu cuenta.", "timestamp": "2026-07-18T15:02:00Z"},
+      {"sender": "usuario", "text": "Me acaba de llegar un SMS con un número de 6 dígitos.", "timestamp": "2026-07-18T15:03:00Z"},
+      {"sender": "repartidor", "text": "Perfecto, dímelo y en 2 minutos tienes tu pedido.", "timestamp": "2026-07-18T15:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_003",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "dime el código de verificación que te enviamos por SMS para procesar tu reembolso",
+    "messages": [
+      {"sender": "repartidor", "text": "Buenos días. Te contactamos porque tu pedido tuvo un problema de cobro.", "timestamp": "2026-07-18T10:00:00Z"},
+      {"sender": "usuario", "text": "¿Cómo así? Yo sí pague.", "timestamp": "2026-07-18T10:01:00Z"},
+      {"sender": "repartidor", "text": "Sí, pero se cobró dos veces. Para procesar tu reembolso necesitamos validar tu identidad. Dime el código de verificación que te enviamos por SMS.", "timestamp": "2026-07-18T10:02:00Z"},
+      {"sender": "usuario", "text": "Sí me llegó un mensaje con un código.", "timestamp": "2026-07-18T10:03:00Z"},
+      {"sender": "repartidor", "text": "¿Cuál es? Es urgente para procesar el reembolso hoy.", "timestamp": "2026-07-18T10:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_004",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "el sistema requiere que confirmes tu cuenta con el código que llega por correo",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola! Soy el repartidor de tu pedido. El sistema está actualizándose hoy.", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "usuario", "text": "Ok y mi pedido?", "timestamp": "2026-07-18T16:01:00Z"},
+      {"sender": "repartidor", "text": "Ya lo tengo. Pero el sistema requiere que confirmes tu cuenta con el código que llega por correo antes de que pueda entregarlo.", "timestamp": "2026-07-18T16:02:00Z"},
+      {"sender": "usuario", "text": "Eso es raro, nunca me habían pedido eso.", "timestamp": "2026-07-18T16:03:00Z"},
+      {"sender": "repartidor", "text": "Es nuevo, desde la última actualización. Es solo para verificar que eres el titular de la cuenta.", "timestamp": "2026-07-18T16:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_005",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "comparte el código de autenticación de 6 dígitos que acaba de llegar a tu teléfono",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, tu cuenta de Rappi fue accedida desde un dispositivo desconocido. Soy de seguridad.", "timestamp": "2026-07-18T11:00:00Z"},
+      {"sender": "usuario", "text": "¿Qué? Eso no puede ser.", "timestamp": "2026-07-18T11:01:00Z"},
+      {"sender": "repartidor", "text": "Sí, para protegerla necesito que compares el código de autenticación de 6 dígitos que acaba de llegar a tu teléfono.", "timestamp": "2026-07-18T11:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_006",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "solo por aquí puedo ayudarte, envíame el código de seguridad que te mandamos",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, soporte de Rappi. El sistema está fallando y tu pedido quedó en espera.", "timestamp": "2026-07-18T13:00:00Z"},
+      {"sender": "usuario", "text": "¿Por qué? Yo necesito que llegue pronto.", "timestamp": "2026-07-18T13:01:00Z"},
+      {"sender": "repartidor", "text": "Solo por aquí puedo ayudarte. Envíame el código de seguridad que te mandamos y lo activo manualmente.", "timestamp": "2026-07-18T13:02:00Z"},
+      {"sender": "usuario", "text": "¿Y si no lo tengo?", "timestamp": "2026-07-18T13:03:00Z"},
+      {"sender": "repartidor", "text": "Revisa tu SMS, siempre llega en menos de un minuto.", "timestamp": "2026-07-18T13:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_007",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "necesito el código de verificación de tu cuenta para confirmar la identidad del destinatario",
+    "messages": [
+      {"sender": "repartidor", "text": "Buenas tardes, tengo tu pedido. Por nueva política de Rappi debo confirmar la identidad del destinatario.", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "usuario", "text": "¿Cómo así? Siempre me entregan directo.", "timestamp": "2026-07-18T17:01:00Z"},
+      {"sender": "repartidor", "text": "Es desde esta semana. Necesito el código de verificación de tu cuenta para confirmar la identidad del destinatario.", "timestamp": "2026-07-18T17:02:00Z"},
+      {"sender": "usuario", "text": "No creo que eso sea normal.", "timestamp": "2026-07-18T17:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_008",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "mándame el número que te llegó por SMS que empieza con G-",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola! Ya estoy cerca. Oye, ¿te llegó un SMS hace rato?", "timestamp": "2026-07-18T18:00:00Z"},
+      {"sender": "usuario", "text": "Sí, me llegó un mensaje raro.", "timestamp": "2026-07-18T18:01:00Z"},
+      {"sender": "repartidor", "text": "Sí eso es para la entrega. Mándame el número que te llegó por SMS que empieza con G-", "timestamp": "2026-07-18T18:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_009",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "dime el código que dice 'tu código de Rappi es'",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, tengo tu pedido pero no me deja marcarlo como en camino.", "timestamp": "2026-07-18T12:00:00Z"},
+      {"sender": "usuario", "text": "¿Qué necesitas?", "timestamp": "2026-07-18T12:01:00Z"},
+      {"sender": "repartidor", "text": "Revisa si te llegó un SMS que dice 'Tu código de Rappi es'. Dime ese código y ya.", "timestamp": "2026-07-18T12:02:00Z"},
+      {"sender": "usuario", "text": "Me llegó uno hace un momento...", "timestamp": "2026-07-18T12:03:00Z"},
+      {"sender": "repartidor", "text": "Sí ese, escríbemelo rápido.", "timestamp": "2026-07-18T12:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_010",
+    "label": "estafa",
+    "scam_type": "robo_otp",
+    "evidence": "la app no funciona, escríbeme el código que acaba de llegar a tu correo electrónico",
+    "messages": [
+      {"sender": "repartidor", "text": "Disculpa la demora, la app no funciona en esta zona.", "timestamp": "2026-07-18T09:00:00Z"},
+      {"sender": "usuario", "text": "¿Cuándo llega entonces?", "timestamp": "2026-07-18T09:01:00Z"},
+      {"sender": "repartidor", "text": "Ya mero, pero para confirmar la entrega escríbeme el código que acaba de llegar a tu correo electrónico.", "timestamp": "2026-07-18T09:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_011",
+    "label": "estafa",
+    "scam_type": "robo_codigo_entrega",
+    "evidence": "dime el código del pedido ahorita que lo necesito para que el sistema me lo asigne",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, soy el repartidor asignado a tu pedido.", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "usuario", "text": "Hola, ¿ya lo recogiste?", "timestamp": "2026-07-18T14:01:00Z"},
+      {"sender": "repartidor", "text": "Estoy en el restaurante. Dime el código del pedido ahorita que lo necesito para que el sistema me lo asigne.", "timestamp": "2026-07-18T14:02:00Z"},
+      {"sender": "usuario", "text": "¿El código de entrega? ¿No lo tienes tú en la app?", "timestamp": "2026-07-18T14:03:00Z"},
+      {"sender": "repartidor", "text": "Se me borró, el sistema falló. Sin el código no me deja aceptar el pedido.", "timestamp": "2026-07-18T14:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_012",
+    "label": "estafa",
+    "scam_type": "robo_codigo_entrega",
+    "evidence": "mándame el código de tu pedido para marcar como entregado en el sistema antes de llegar",
+    "messages": [
+      {"sender": "repartidor", "text": "Ya voy para tu dirección, dame unos 8 minutos.", "timestamp": "2026-07-18T15:00:00Z"},
+      {"sender": "usuario", "text": "Ok, gracias.", "timestamp": "2026-07-18T15:01:00Z"},
+      {"sender": "repartidor", "text": "Oye, ¿me puedes mandar el código de tu pedido para marcar como entregado en el sistema antes de llegar? Así ahorro tiempo.", "timestamp": "2026-07-18T15:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_013",
+    "label": "estafa",
+    "scam_type": "robo_codigo_entrega",
+    "evidence": "necesito el PIN de entrega para confirmar en la plataforma, mándalo ya",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, ya tengo tu pedido. ¿Me das la dirección exacta?", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "usuario", "text": "Calle 45 # 12-34, apto 502.", "timestamp": "2026-07-18T16:01:00Z"},
+      {"sender": "repartidor", "text": "Gracias. Necesito el PIN de entrega para confirmar en la plataforma, mándalo ya así cuando llegue es más rápido.", "timestamp": "2026-07-18T16:02:00Z"},
+      {"sender": "usuario", "text": "¿Para qué necesitas el PIN antes de llegar?", "timestamp": "2026-07-18T16:03:00Z"},
+      {"sender": "repartidor", "text": "Para pre-confirmar, es una nueva función.", "timestamp": "2026-07-18T16:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_014",
+    "label": "estafa",
+    "scam_type": "robo_codigo_entrega",
+    "evidence": "mi app se cayó, dame el código de entrega que tienes en tu pantalla para marcar el pedido",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, ya casi llego. Mi app se cayó, dame el código de entrega que tienes en tu pantalla para marcar el pedido.", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "usuario", "text": "¿Cuál código? Tengo uno aquí de 4 dígitos.", "timestamp": "2026-07-18T17:01:00Z"},
+      {"sender": "repartidor", "text": "Sí ese, dímelo.", "timestamp": "2026-07-18T17:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_015",
+    "label": "estafa",
+    "scam_type": "robo_codigo_entrega",
+    "evidence": "para poder subir al edificio necesito que me des el código de entrega del pedido",
+    "messages": [
+      {"sender": "repartidor", "text": "Estoy abajo en tu edificio.", "timestamp": "2026-07-18T13:00:00Z"},
+      {"sender": "usuario", "text": "Ya bajo.", "timestamp": "2026-07-18T13:01:00Z"},
+      {"sender": "repartidor", "text": "El portero no me deja pasar. Para poder subir al edificio necesito que me des el código de entrega del pedido.", "timestamp": "2026-07-18T13:02:00Z"},
+      {"sender": "usuario", "text": "El portero no te debería pedir eso.", "timestamp": "2026-07-18T13:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_016",
+    "label": "estafa",
+    "scam_type": "robo_codigo_entrega",
+    "evidence": "el sistema no acepta la entrega si no ingreso primero el código que tiene el cliente",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, tengo tu pedido listo para entrega.", "timestamp": "2026-07-18T11:00:00Z"},
+      {"sender": "usuario", "text": "Ok, ¿ya vienes?", "timestamp": "2026-07-18T11:01:00Z"},
+      {"sender": "repartidor", "text": "Sí pero el sistema no acepta la entrega si no ingreso primero el código que tiene el cliente. ¿Cuál es el tuyo?", "timestamp": "2026-07-18T11:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_017",
+    "label": "estafa",
+    "scam_type": "robo_codigo_entrega",
+    "evidence": "dime el código de confirmación de entrega para hacer el registro antes de llegar a tu puerta",
+    "messages": [
+      {"sender": "repartidor", "text": "Voy en camino, dime el código de confirmación de entrega para hacer el registro antes de llegar a tu puerta.", "timestamp": "2026-07-18T18:00:00Z"},
+      {"sender": "usuario", "text": "No creo que deba darlo antes de que llegues.", "timestamp": "2026-07-18T18:01:00Z"},
+      {"sender": "repartidor", "text": "Es el nuevo sistema de Rappi, más eficiente.", "timestamp": "2026-07-18T18:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_018",
+    "label": "estafa",
+    "scam_type": "robo_codigo_entrega",
+    "evidence": "mándame el número de 4 dígitos del pedido para validarlo en mi app",
+    "messages": [
+      {"sender": "repartidor", "text": "Ya recogí el pedido en el restaurante.", "timestamp": "2026-07-18T10:00:00Z"},
+      {"sender": "usuario", "text": "Perfecto, ¿cuánto tardas?", "timestamp": "2026-07-18T10:01:00Z"},
+      {"sender": "repartidor", "text": "Como 15 min. Oye mándame el número de 4 dígitos del pedido para validarlo en mi app.", "timestamp": "2026-07-18T10:02:00Z"},
+      {"sender": "usuario", "text": "¿Para qué lo necesitas antes de llegar?", "timestamp": "2026-07-18T10:03:00Z"},
+      {"sender": "repartidor", "text": "Para que no me rechacen la entrega.", "timestamp": "2026-07-18T10:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_019",
+    "label": "estafa",
+    "scam_type": "deposito_falso",
+    "evidence": "tuve que poner $300 de mi bolsillo para pagar el pedido, ¿me puedes depositar a este Nequi?",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, ya tengo tu pedido.", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "usuario", "text": "Bien, ¿cuándo llegas?", "timestamp": "2026-07-18T14:01:00Z"},
+      {"sender": "repartidor", "text": "En 10 min. Pero tuve que poner $300 de mi bolsillo para pagar el pedido porque el sistema rechazó tu tarjeta. ¿Me puedes depositar a este Nequi? 300-456-7890", "timestamp": "2026-07-18T14:02:00Z"},
+      {"sender": "usuario", "text": "Pero yo ya pagué en la app.", "timestamp": "2026-07-18T14:03:00Z"},
+      {"sender": "repartidor", "text": "Sí pero el restaurante no lo recibió, me tocó poner de lo mío.", "timestamp": "2026-07-18T14:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_020",
+    "label": "estafa",
+    "scam_type": "deposito_falso",
+    "evidence": "la propina no se procesó por un error del sistema, ¿puedes depositar $200 a Nequi?",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, acabo de entregar tu pedido. Solo quería avisarte que la propina no se procesó por un error del sistema.", "timestamp": "2026-07-18T15:00:00Z"},
+      {"sender": "usuario", "text": "Ah no sabía.", "timestamp": "2026-07-18T15:01:00Z"},
+      {"sender": "repartidor", "text": "¿Puedes depositar $200 a Nequi? Mi número es 3154567890. Rappi me dijo que así te lo reembolsan a ti.", "timestamp": "2026-07-18T15:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_021",
+    "label": "estafa",
+    "scam_type": "deposito_falso",
+    "evidence": "hay un cobro extra por zona de difícil acceso, necesito que hagas una transferencia de $150",
+    "messages": [
+      {"sender": "repartidor", "text": "Buenas, ya casi llego. Hay un cobro extra por zona de difícil acceso.", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "usuario", "text": "¿Cómo así? Eso no aparece en mi pedido.", "timestamp": "2026-07-18T16:01:00Z"},
+      {"sender": "repartidor", "text": "Es que Rappi lo cobra aparte. Necesito que hagas una transferencia de $150 a Bancolombia cuenta 123-456789-10 antes de que suba.", "timestamp": "2026-07-18T16:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_022",
+    "label": "estafa",
+    "scam_type": "deposito_falso",
+    "evidence": "mi moto se descompuso, ¿puedes hacer una recarga de $250 para que tome un taxi y lleve el pedido?",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, tengo un problema. Mi moto se descompuso a mitad del camino.", "timestamp": "2026-07-18T12:00:00Z"},
+      {"sender": "usuario", "text": "¿Y mi pedido?", "timestamp": "2026-07-18T12:01:00Z"},
+      {"sender": "repartidor", "text": "Lo tengo, pero necesito llegar. ¿Puedes hacer una recarga de $250 para que tome un taxi y lleve el pedido? Después Rappi te lo devuelve.", "timestamp": "2026-07-18T12:02:00Z"},
+      {"sender": "usuario", "text": "¿Por qué yo tengo que pagar eso?", "timestamp": "2026-07-18T12:03:00Z"},
+      {"sender": "repartidor", "text": "Es que si cancelo me descuentan y pierdo el día.", "timestamp": "2026-07-18T12:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_023",
+    "label": "estafa",
+    "scam_type": "deposito_falso",
+    "evidence": "para hacerte el descuento del 50% necesitas depositar primero $500 a este Nequi",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, tengo una oferta especial para ti de Rappi.", "timestamp": "2026-07-18T13:00:00Z"},
+      {"sender": "usuario", "text": "¿Qué oferta?", "timestamp": "2026-07-18T13:01:00Z"},
+      {"sender": "repartidor", "text": "Un descuento del 50% en tu próximo pedido. Para hacerte el descuento necesitas depositar primero $500 a este Nequi: 3201234567, y Rappi te devuelve $1000.", "timestamp": "2026-07-18T13:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_024",
+    "label": "estafa",
+    "scam_type": "deposito_falso",
+    "evidence": "el restaurante cobró $180 extra, págate tú y yo te transfiero cuando llegue a casa",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, hubo un problema. El restaurante cobró $180 extra que no estaba en el precio de la app.", "timestamp": "2026-07-18T09:00:00Z"},
+      {"sender": "usuario", "text": "¿Eso por qué?", "timestamp": "2026-07-18T09:01:00Z"},
+      {"sender": "repartidor", "text": "Un cargo de empaque. Págatelo tú y yo te transfiero cuando llegue a casa. O deposítame al Nequi 3009876543.", "timestamp": "2026-07-18T09:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_025",
+    "label": "estafa",
+    "scam_type": "deposito_falso",
+    "evidence": "Rappi me va a descontar de mi pago si no me recargas $200 para cubrir el error del sistema",
+    "messages": [
+      {"sender": "repartidor", "text": "El sistema de Rappi tuvo un error con tu pedido.", "timestamp": "2026-07-18T11:00:00Z"},
+      {"sender": "usuario", "text": "¿Qué pasó?", "timestamp": "2026-07-18T11:01:00Z"},
+      {"sender": "repartidor", "text": "Rappi me va a descontar de mi pago si no me recargas $200 para cubrir el error del sistema. Daviplata: 3112345678.", "timestamp": "2026-07-18T11:02:00Z"},
+      {"sender": "usuario", "text": "Eso no tiene ningún sentido.", "timestamp": "2026-07-18T11:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_026",
+    "label": "estafa",
+    "scam_type": "deposito_falso",
+    "evidence": "deposita $350 a este número de Yappy antes de que salga a buscar tu pedido",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, me asignaron tu pedido.", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "usuario", "text": "Bien, ¿cuándo lo recogen?", "timestamp": "2026-07-18T17:01:00Z"},
+      {"sender": "repartidor", "text": "Deposita $350 a este número de Yappy antes de que salga a buscar tu pedido: 6123-4567. Es un depósito de garantía por zona.", "timestamp": "2026-07-18T17:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_027",
+    "label": "estafa",
+    "scam_type": "redireccion_externa",
+    "evidence": "escríbeme a mi WhatsApp personal +57 315 888 9900, que es donde atiende el soporte real",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, para resolver cualquier problema con tu pedido escríbeme a mi WhatsApp personal +57 315 888 9900, que es donde atiende el soporte real.", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "usuario", "text": "¿Por qué a otro número?", "timestamp": "2026-07-18T14:01:00Z"},
+      {"sender": "repartidor", "text": "Este canal es inestable. El número que te pasé es el oficial de atención directa.", "timestamp": "2026-07-18T14:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_028",
+    "label": "estafa",
+    "scam_type": "redireccion_externa",
+    "evidence": "contacta al soporte real de Rappi en este número de WhatsApp: +52 55 1234 5678",
+    "messages": [
+      {"sender": "usuario", "text": "Llevo una hora esperando mi pedido.", "timestamp": "2026-07-18T15:00:00Z"},
+      {"sender": "repartidor", "text": "Hola, para ese tipo de problemas contacta al soporte real de Rappi en este número de WhatsApp: +52 55 1234 5678. Ellos te pueden ayudar mejor.", "timestamp": "2026-07-18T15:01:00Z"}
+    ]
+  },
+  {
+    "id": "conv_029",
+    "label": "estafa",
+    "scam_type": "redireccion_externa",
+    "evidence": "mi WhatsApp oficial de repartidor es +573001112233, escríbeme ahí para coordinar la entrega",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, soy tu repartidor. Mi WhatsApp oficial de repartidor es +573001112233, escríbeme ahí para coordinar la entrega.", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "usuario", "text": "¿No puedo hablar aquí?", "timestamp": "2026-07-18T16:01:00Z"},
+      {"sender": "repartidor", "text": "Aquí no me llegan bien los mensajes de Rappi. El otro número es más confiable.", "timestamp": "2026-07-18T16:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_030",
+    "label": "estafa",
+    "scam_type": "redireccion_externa",
+    "evidence": "agrega este número a tus contactos: +521234567890, es el canal de soporte prioritario de Rappi México",
+    "messages": [
+      {"sender": "repartidor", "text": "Hola cliente, agrega este número a tus contactos: +521234567890, es el canal de soporte prioritario de Rappi México.", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "usuario", "text": "¿Para qué?", "timestamp": "2026-07-18T17:01:00Z"},
+      {"sender": "repartidor", "text": "Para que puedas reportar cualquier problema directamente con el equipo de tu zona.", "timestamp": "2026-07-18T17:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_031",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Hola, el código del portón de mi edificio es 4521. Toca el timbre del 3B.", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "repartidor", "text": "Gracias, ya estoy abajo. En un momento subo.", "timestamp": "2026-07-18T14:02:00Z"},
+      {"sender": "usuario", "text": "Ok, si no abren, déjalo con el vigilante.", "timestamp": "2026-07-18T14:03:00Z"},
+      {"sender": "repartidor", "text": "Entendido, ya subí, nadie abrió así que lo dejé con el vigilante.", "timestamp": "2026-07-18T14:08:00Z"},
+      {"sender": "usuario", "text": "Perfecto, muchas gracias.", "timestamp": "2026-07-18T14:09:00Z"}
+    ]
+  },
+  {
+    "id": "conv_032",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Mejor escríbeme por WhatsApp que aquí no me llegan bien los mensajes.", "timestamp": "2026-07-18T15:00:00Z"},
+      {"sender": "repartidor", "text": "Ok, ¿a qué número?", "timestamp": "2026-07-18T15:01:00Z"},
+      {"sender": "usuario", "text": "Al mismo número de este chat.", "timestamp": "2026-07-18T15:02:00Z"},
+      {"sender": "repartidor", "text": "Ah claro, ya te escribo.", "timestamp": "2026-07-18T15:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_033",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, ¿cuál es el código postal de tu dirección? El mapa me manda a otro lado.", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "usuario", "text": "El código postal es 06600, colonia Juárez.", "timestamp": "2026-07-18T16:01:00Z"},
+      {"sender": "repartidor", "text": "Gracias, ya lo ubiqué.", "timestamp": "2026-07-18T16:03:00Z"},
+      {"sender": "usuario", "text": "¿Cuánto tardas?", "timestamp": "2026-07-18T16:04:00Z"},
+      {"sender": "repartidor", "text": "Como 10 minutos.", "timestamp": "2026-07-18T16:05:00Z"}
+    ]
+  },
+  {
+    "id": "conv_034",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "¿Cuál es el código del elevador? El portero me dice que necesito uno.", "timestamp": "2026-07-18T13:00:00Z"},
+      {"sender": "usuario", "text": "El código del elevador es 456, pero generalmente el portero te da acceso directo.", "timestamp": "2026-07-18T13:01:00Z"},
+      {"sender": "repartidor", "text": "Ok ya me dejó pasar, estoy subiendo.", "timestamp": "2026-07-18T13:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_035",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Ya pagué con tarjeta, no sé por qué dice que el pedido está pendiente de pago?", "timestamp": "2026-07-18T11:00:00Z"},
+      {"sender": "repartidor", "text": "Hola, yo solo hago la entrega, el pago lo maneja Rappi. Te recomiendo contactar soporte en la app.", "timestamp": "2026-07-18T11:02:00Z"},
+      {"sender": "usuario", "text": "Ok gracias.", "timestamp": "2026-07-18T11:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_036",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¡Esto es una estafa! Llevan 2 horas con mi pedido y nadie me avisa nada.", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "repartidor", "text": "Entiendo tu molestia. Acaban de asignarme el pedido, voy en camino.", "timestamp": "2026-07-18T17:02:00Z"},
+      {"sender": "usuario", "text": "¿Cuánto tiempo más?", "timestamp": "2026-07-18T17:03:00Z"},
+      {"sender": "repartidor", "text": "15 minutos máximo, perdón por la demora.", "timestamp": "2026-07-18T17:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_037",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿El pedido llegó mal, faltaron dos tacos. ¿Cómo hago el reclamo?", "timestamp": "2026-07-18T18:00:00Z"},
+      {"sender": "repartidor", "text": "Hola, lo siento, yo solo entrego lo que me dan en el restaurante. Para reclamos debes usar la opción 'Problema con mi pedido' en la app.", "timestamp": "2026-07-18T18:02:00Z"},
+      {"sender": "usuario", "text": "Ok, gracias.", "timestamp": "2026-07-18T18:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_038",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Cuánto es el total con la propina incluida que puse en la app?", "timestamp": "2026-07-18T12:00:00Z"},
+      {"sender": "repartidor", "text": "Hola, no veo el total en mi app, eso lo maneja Rappi. Puedes verlo en el detalle del pedido.", "timestamp": "2026-07-18T12:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_039",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Ya vienes? Llevo esperando 45 minutos.", "timestamp": "2026-07-18T10:00:00Z"},
+      {"sender": "repartidor", "text": "Disculpa, hubo mucho tráfico. Ya estoy a 3 minutos.", "timestamp": "2026-07-18T10:01:00Z"},
+      {"sender": "usuario", "text": "¡Por favor apúrate!", "timestamp": "2026-07-18T10:02:00Z"},
+      {"sender": "repartidor", "text": "Sí, ya llego.", "timestamp": "2026-07-18T10:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_040",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, ¿cómo entro al conjunto? La puerta principal está con llave.", "timestamp": "2026-07-18T09:00:00Z"},
+      {"sender": "usuario", "text": "Toca el interfono del 201, que es donde estoy yo.", "timestamp": "2026-07-18T09:01:00Z"},
+      {"sender": "repartidor", "text": "Ok ya toqué, ábreme.", "timestamp": "2026-07-18T09:03:00Z"},
+      {"sender": "usuario", "text": "Listo, ya te abrí.", "timestamp": "2026-07-18T09:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_041",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Me llegó un correo raro de Rappi pidiendo datos, ¿es legítimo?", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "repartidor", "text": "Yo solo soy el repartidor, no manejo correos. Te recomiendo llamar al soporte oficial de Rappi desde la app.", "timestamp": "2026-07-18T14:02:00Z"},
+      {"sender": "usuario", "text": "Ok, gracias por la advertencia.", "timestamp": "2026-07-18T14:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_042",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Hay un cobro de $50 en mi tarjeta que no reconozco.", "timestamp": "2026-07-18T15:00:00Z"},
+      {"sender": "repartidor", "text": "Eso lo debes reportar directamente con Rappi, yo no tengo acceso a tus datos de pago.", "timestamp": "2026-07-18T15:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_043",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Necesitas el código del edificio o ya lo tienes en el pedido?", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "repartidor", "text": "No lo tengo, ¿me lo puedes dar?", "timestamp": "2026-07-18T16:01:00Z"},
+      {"sender": "usuario", "text": "Claro, el código del portón es #1234*.", "timestamp": "2026-07-18T16:02:00Z"},
+      {"sender": "repartidor", "text": "Muchas gracias, ya entré.", "timestamp": "2026-07-18T16:05:00Z"}
+    ]
+  },
+  {
+    "id": "conv_044",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Tienes el código de entrega que aparece en mi app? Quiero asegurarme que eres el repartidor correcto.", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "repartidor", "text": "Sí, el código de entrega lo veo en mi app. Te lo muestro cuando llegue a tu puerta.", "timestamp": "2026-07-18T17:01:00Z"},
+      {"sender": "usuario", "text": "Perfecto, nos vemos en la puerta.", "timestamp": "2026-07-18T17:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_045",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Es urgente, es comida para un bebé, por favor apúrate.", "timestamp": "2026-07-18T11:00:00Z"},
+      {"sender": "repartidor", "text": "Entendido, voy lo más rápido posible.", "timestamp": "2026-07-18T11:01:00Z"},
+      {"sender": "usuario", "text": "¿Cuántos minutos?", "timestamp": "2026-07-18T11:02:00Z"},
+      {"sender": "repartidor", "text": "5 minutos, ya estoy cerca.", "timestamp": "2026-07-18T11:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_046",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Si no llega en 10 minutos voy a cancelar.", "timestamp": "2026-07-18T13:00:00Z"},
+      {"sender": "repartidor", "text": "Ya voy, disculpa. Tráfico en el centro.", "timestamp": "2026-07-18T13:01:00Z"},
+      {"sender": "usuario", "text": "Ok, avísame cuando llegues abajo.", "timestamp": "2026-07-18T13:02:00Z"},
+      {"sender": "repartidor", "text": "Ya estoy abajo.", "timestamp": "2026-07-18T13:09:00Z"}
+    ]
+  },
+  {
+    "id": "conv_047",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "El sistema me dice que confirme mi número de teléfono en la app, ¿es normal?", "timestamp": "2026-07-18T12:00:00Z"},
+      {"sender": "repartidor", "text": "Sí, a veces Rappi pide reconfirmación. Es dentro de la app oficial, no por aquí.", "timestamp": "2026-07-18T12:02:00Z"},
+      {"sender": "usuario", "text": "Ah ok, lo hago por la app entonces.", "timestamp": "2026-07-18T12:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_048",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, ¿es posible dejar el pedido con tu vecino? No hay nadie en tu dirección.", "timestamp": "2026-07-18T10:00:00Z"},
+      {"sender": "usuario", "text": "Sí, déjalo con el de la 304.", "timestamp": "2026-07-18T10:01:00Z"},
+      {"sender": "repartidor", "text": "Ok ya lo dejé con él, te mandó foto de la entrega.", "timestamp": "2026-07-18T10:05:00Z"}
+    ]
+  },
+  {
+    "id": "conv_049",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "El repartidor anterior me dijo que tenía que verificar algo con él, ¿qué fue eso?", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "repartidor", "text": "No sé de qué habla, yo soy otro repartidor. Yo no pido ninguna verificación adicional.", "timestamp": "2026-07-18T16:02:00Z"},
+      {"sender": "usuario", "text": "Ok gracias por aclarar.", "timestamp": "2026-07-18T16:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_050",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Hice la transferencia en la app, ya está todo pagado.", "timestamp": "2026-07-18T09:00:00Z"},
+      {"sender": "repartidor", "text": "Entendido, ya veo el pedido confirmado en mi app.", "timestamp": "2026-07-18T09:02:00Z"},
+      {"sender": "usuario", "text": "¿Cuándo lo recogen del restaurante?", "timestamp": "2026-07-18T09:03:00Z"},
+      {"sender": "repartidor", "text": "En 5 minutos ya lo estoy recogiendo.", "timestamp": "2026-07-18T09:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_051",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Me puedes dar el código wifi para el repartidor? Es que mi edificio lo pide.", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "repartidor", "text": "Hola, yo no necesito código wifi para entregar, solo necesito acceso al edificio.", "timestamp": "2026-07-18T14:01:00Z"},
+      {"sender": "usuario", "text": "Ah ok, el portero te deja entrar entonces.", "timestamp": "2026-07-18T14:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_052",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Ya tengo el pedido, voy en camino.", "timestamp": "2026-07-18T15:00:00Z"},
+      {"sender": "usuario", "text": "Excelente, ¿necesito darte el código de entrega cuando llegues?", "timestamp": "2026-07-18T15:01:00Z"},
+      {"sender": "repartidor", "text": "Sí, cuando esté en tu puerta me lo muestras desde tu app y listo.", "timestamp": "2026-07-18T15:02:00Z"},
+      {"sender": "usuario", "text": "Perfecto.", "timestamp": "2026-07-18T15:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_053",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Puedo pagarte la propina en efectivo cuando llegues?", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "repartidor", "text": "Claro que sí, lo que prefieras.", "timestamp": "2026-07-18T16:01:00Z"},
+      {"sender": "usuario", "text": "Ok, te tengo $50 en efectivo.", "timestamp": "2026-07-18T16:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_054",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿No es raro que Rappi me pida verificar mi identidad en la app?", "timestamp": "2026-07-18T11:00:00Z"},
+      {"sender": "repartidor", "text": "No soy de soporte, pero sé que Rappi sí pide verificación dentro de su propia app oficial. Si lo piden por otro canal, ignóralo.", "timestamp": "2026-07-18T11:02:00Z"},
+      {"sender": "usuario", "text": "Me llegó dentro de la app, entonces está bien.", "timestamp": "2026-07-18T11:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_055",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "El negocio ya va a cerrar, ¿puedes agilizar la recogida?", "timestamp": "2026-07-18T13:00:00Z"},
+      {"sender": "repartidor", "text": "Sí, ya voy llegando al restaurante.", "timestamp": "2026-07-18T13:01:00Z"},
+      {"sender": "usuario", "text": "Gracias.", "timestamp": "2026-07-18T13:02:00Z"},
+      {"sender": "repartidor", "text": "Ya recogí el pedido, en camino a tu dirección.", "timestamp": "2026-07-18T13:05:00Z"}
+    ]
+  },
+  {
+    "id": "conv_056",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Me puedes escribir mejor por WhatsApp que aquí la señal es mala?", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "repartidor", "text": "Este es WhatsApp. ¿No te están llegando los mensajes?", "timestamp": "2026-07-18T14:01:00Z"},
+      {"sender": "usuario", "text": "Ah sí tienes razón jaja. ¿Cuánto tardas?", "timestamp": "2026-07-18T14:02:00Z"},
+      {"sender": "repartidor", "text": "Como 8 minutos.", "timestamp": "2026-07-18T14:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_057",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Tienes el código de mi pedido? Quiero verificar que es el correcto.", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "repartidor", "text": "Sí, cuando llegue a tu puerta lo mostramos en las apps y confirmamos.", "timestamp": "2026-07-18T17:01:00Z"},
+      {"sender": "usuario", "text": "Ok perfecto.", "timestamp": "2026-07-18T17:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_058",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "¿Puedo dejar el pedido en la portería?", "timestamp": "2026-07-18T12:00:00Z"},
+      {"sender": "usuario", "text": "Sí, con la señora Marta, dile que es para el 5B.", "timestamp": "2026-07-18T12:01:00Z"},
+      {"sender": "repartidor", "text": "Listo, ya entregué con la señora Marta.", "timestamp": "2026-07-18T12:06:00Z"},
+      {"sender": "usuario", "text": "Gracias.", "timestamp": "2026-07-18T12:07:00Z"}
+    ]
+  },
+  {
+    "id": "conv_059",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Tengo una reunión en 10 minutos, ¿puedes llegar antes?", "timestamp": "2026-07-18T09:00:00Z"},
+      {"sender": "repartidor", "text": "Voy lo más rápido que puedo, 5 minutos.", "timestamp": "2026-07-18T09:01:00Z"},
+      {"sender": "usuario", "text": "Perfecto.", "timestamp": "2026-07-18T09:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_060",
+    "label": "legitima",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "El código de mi empresa es para la entrada de proveedores. ¿Lo necesitas?", "timestamp": "2026-07-18T10:00:00Z"},
+      {"sender": "repartidor", "text": "Sí, por favor, no me dejan entrar sin él.", "timestamp": "2026-07-18T10:01:00Z"},
+      {"sender": "usuario", "text": "Es PROV-2024.", "timestamp": "2026-07-18T10:02:00Z"},
+      {"sender": "repartidor", "text": "Perfecto, ya me dejaron pasar.", "timestamp": "2026-07-18T10:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_061",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Dónde está mi pedido?", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "repartidor", "text": "Estoy en el restaurante esperando que lo preparen.", "timestamp": "2026-07-18T14:02:00Z"},
+      {"sender": "usuario", "text": "Ok.", "timestamp": "2026-07-18T14:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_062",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, ya recogí tu pedido.", "timestamp": "2026-07-18T15:00:00Z"},
+      {"sender": "usuario", "text": "Gracias, ¿cuánto tardas?", "timestamp": "2026-07-18T15:01:00Z"},
+      {"sender": "repartidor", "text": "Unos 15 minutos.", "timestamp": "2026-07-18T15:02:00Z"},
+      {"sender": "usuario", "text": "Ok.", "timestamp": "2026-07-18T15:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_063",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Ya llegué a tu dirección.", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "usuario", "text": "Ahorita bajo.", "timestamp": "2026-07-18T16:01:00Z"},
+      {"sender": "repartidor", "text": "Ok, aquí espero.", "timestamp": "2026-07-18T16:02:00Z"},
+      {"sender": "usuario", "text": "Ya voy.", "timestamp": "2026-07-18T16:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_064",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Pedido recibido, todo completo. Gracias.", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "repartidor", "text": "Con mucho gusto, buen provecho.", "timestamp": "2026-07-18T17:01:00Z"}
+    ]
+  },
+  {
+    "id": "conv_065",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Cuántos minutos faltan?", "timestamp": "2026-07-18T11:00:00Z"},
+      {"sender": "repartidor", "text": "Ya voy llegando, 2 minutos.", "timestamp": "2026-07-18T11:01:00Z"},
+      {"sender": "usuario", "text": "Perfecto.", "timestamp": "2026-07-18T11:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_066",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "El restaurante dice que el pedido tarda 20 minutos más en prepararse.", "timestamp": "2026-07-18T12:00:00Z"},
+      {"sender": "usuario", "text": "Está bien, no hay prisa.", "timestamp": "2026-07-18T12:01:00Z"}
+    ]
+  },
+  {
+    "id": "conv_067",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "¿Es segundo piso o hay elevador?", "timestamp": "2026-07-18T13:00:00Z"},
+      {"sender": "usuario", "text": "Segundo piso, las escaleras están a la derecha.", "timestamp": "2026-07-18T13:01:00Z"},
+      {"sender": "repartidor", "text": "Ok gracias.", "timestamp": "2026-07-18T13:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_068",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Todo perfecto, muchas gracias por la entrega rápida.", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "repartidor", "text": "Gracias a usted, que disfrute.", "timestamp": "2026-07-18T14:01:00Z"}
+    ]
+  },
+  {
+    "id": "conv_069",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "¿En qué piso es la entrega?", "timestamp": "2026-07-18T15:00:00Z"},
+      {"sender": "usuario", "text": "Piso 8, departamento 801.", "timestamp": "2026-07-18T15:01:00Z"},
+      {"sender": "repartidor", "text": "Perfecto, ya voy subiendo.", "timestamp": "2026-07-18T15:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_070",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Ya saliste del restaurante?", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "repartidor", "text": "Sí, ya salí, en 12 minutos llego.", "timestamp": "2026-07-18T16:01:00Z"}
+    ]
+  },
+  {
+    "id": "conv_071",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Hola, ¿hay estacionamiento cerca para dejar la moto?", "timestamp": "2026-07-18T11:00:00Z"},
+      {"sender": "usuario", "text": "Sí, hay espacio en la calle justo enfrente.", "timestamp": "2026-07-18T11:01:00Z"},
+      {"sender": "repartidor", "text": "Gracias.", "timestamp": "2026-07-18T11:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_072",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿El pedido incluye cubiertos?", "timestamp": "2026-07-18T09:00:00Z"},
+      {"sender": "repartidor", "text": "Eso depende del restaurante, pero sí vi que pusieron cubiertos en la bolsa.", "timestamp": "2026-07-18T09:02:00Z"},
+      {"sender": "usuario", "text": "Perfecto.", "timestamp": "2026-07-18T09:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_073",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Ya entregué tu pedido. ¡Que lo disfrutes!", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "usuario", "text": "Gracias, muy puntual.", "timestamp": "2026-07-18T17:01:00Z"}
+    ]
+  },
+  {
+    "id": "conv_074",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "Toca fuerte el timbre, a veces no se escucha.", "timestamp": "2026-07-18T18:00:00Z"},
+      {"sender": "repartidor", "text": "Ok, ya toqué. ¿Puedes bajar?", "timestamp": "2026-07-18T18:02:00Z"},
+      {"sender": "usuario", "text": "Voy bajando.", "timestamp": "2026-07-18T18:03:00Z"}
+    ]
+  },
+  {
+    "id": "conv_075",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "¿La dirección es en la calle principal o en el callejón de atrás?", "timestamp": "2026-07-18T10:00:00Z"},
+      {"sender": "usuario", "text": "Calle principal, número 45.", "timestamp": "2026-07-18T10:01:00Z"},
+      {"sender": "repartidor", "text": "Ya estoy aquí.", "timestamp": "2026-07-18T10:04:00Z"}
+    ]
+  },
+  {
+    "id": "conv_076",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Ya recogiste en el restaurante?", "timestamp": "2026-07-18T12:00:00Z"},
+      {"sender": "repartidor", "text": "Sí, ya lo tengo todo.", "timestamp": "2026-07-18T12:01:00Z"},
+      {"sender": "usuario", "text": "Bien.", "timestamp": "2026-07-18T12:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_077",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Entrega hecha, firmaste de recibido en la app.", "timestamp": "2026-07-18T13:00:00Z"},
+      {"sender": "usuario", "text": "Sí, todo bien.", "timestamp": "2026-07-18T13:01:00Z"}
+    ]
+  },
+  {
+    "id": "conv_078",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Llevas el pedido completo?", "timestamp": "2026-07-18T16:00:00Z"},
+      {"sender": "repartidor", "text": "Sí, dos bolsas como dice en el pedido.", "timestamp": "2026-07-18T16:01:00Z"},
+      {"sender": "usuario", "text": "Perfecto.", "timestamp": "2026-07-18T16:02:00Z"}
+    ]
+  },
+  {
+    "id": "conv_079",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "repartidor", "text": "Voy saliendo del restaurante ahora.", "timestamp": "2026-07-18T14:00:00Z"},
+      {"sender": "usuario", "text": "Ok, aquí te espero.", "timestamp": "2026-07-18T14:01:00Z"}
+    ]
+  },
+  {
+    "id": "conv_080",
+    "label": "neutral",
+    "scam_type": null,
+    "evidence": null,
+    "messages": [
+      {"sender": "usuario", "text": "¿Cuál es el nombre del repartidor?", "timestamp": "2026-07-18T17:00:00Z"},
+      {"sender": "repartidor", "text": "Me llamo Carlos, ya estoy en camino.", "timestamp": "2026-07-18T17:01:00Z"},
+      {"sender": "usuario", "text": "Ok, Carlos, ya te espero.", "timestamp": "2026-07-18T17:02:00Z"}
+    ]
+  }
+]

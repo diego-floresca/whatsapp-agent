@@ -1,8 +1,9 @@
 import { Response } from 'express';
-import { subscribeToUsers } from '../services/firestoreService';
+import { subscribeToUsers, subscribeToFraudScores } from '../services/firestoreService';
 
 const clients = new Set<Response>();
-let unsubscribeFirestore: (() => void) | null = null;
+let unsubscribeUsers: (() => void) | null = null;
+let unsubscribeFraud: (() => void) | null = null;
 
 export function addClient(res: Response): void {
   res.setHeader('Content-Type', 'text/event-stream');
@@ -32,11 +33,21 @@ export function broadcast(event: string, data: unknown): void {
 }
 
 export function initFirestoreListener(): void {
-  if (unsubscribeFirestore) return; // Ya inicializado
+  if (unsubscribeUsers) return; // Ya inicializado
 
-  unsubscribeFirestore = subscribeToUsers(() => {
+  unsubscribeUsers = subscribeToUsers(() => {
     broadcast('update', { type: 'conversations' });
   });
 
-  console.log('✅ Listener Firestore SSE activo');
+  console.log('✅ Listener Firestore SSE activo (conversaciones)');
+}
+
+export function initFraudScoresListener(): void {
+  if (unsubscribeFraud) return; // Ya inicializado
+
+  unsubscribeFraud = subscribeToFraudScores((waId, score) => {
+    broadcast('fraud_update', score);
+  });
+
+  console.log('✅ Listener Firestore SSE activo (fraud_scores)');
 }

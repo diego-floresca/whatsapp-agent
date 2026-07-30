@@ -4,11 +4,13 @@ import { ChatHeader } from './components/ChatHeader';
 import { ChatWindow } from './components/ChatWindow';
 import { useConversations } from './hooks/useConversations';
 import { useMessages } from './hooks/useMessages';
+import { useFraudScores } from './hooks/useFraudScores';
 
 export default function App() {
   const [activeWaId, setActiveWaId] = useState<string | null>(null);
   const { conversations, loading: convsLoading, refresh: refreshConvs } = useConversations();
   const { messages, loading: msgsLoading, sending, error, sendMessage } = useMessages(activeWaId);
+  const fraudScores = useFraudScores();
 
   const activeConversation = conversations.find((c) => c.waId === activeWaId) ?? null;
 
@@ -39,6 +41,7 @@ export default function App() {
             loading={convsLoading}
             activeWaId={activeWaId}
             onSelect={setActiveWaId}
+            fraudScores={fraudScores}
           />
         </div>
       </aside>
@@ -58,6 +61,7 @@ export default function App() {
               error={error}
               aiEnabled={activeConversation.ai_enabled}
               onSend={sendMessage}
+              fraudScore={activeWaId ? (fraudScores.get(activeWaId) ?? null) : null}
             />
           </>
         ) : (

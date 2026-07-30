@@ -1,4 +1,4 @@
-import type { Conversation, Message } from '../types';
+import type { Conversation, Message, FraudScore } from '../types';
 
 const BASE = '/api/conversations';
 
@@ -27,6 +27,10 @@ export async function sendMessage(waId: string, content: string): Promise<void> 
   });
 }
 
+export async function fetchFraudScores(): Promise<FraudScore[]> {
+  return request<FraudScore[]>('/fraud-scores');
+}
+
 export async function toggleAI(waId: string, enabled: boolean): Promise<void> {
   await request<void>(`/${waId}/ai-toggle`, {
     method: 'PATCH',
@@ -43,4 +47,17 @@ export function createSSEConnection(onUpdate: () => void): EventSource {
     console.warn('SSE: conexión interrumpida, reconectando...');
   };
   return es;
+}
+
+export function addFraudListener(
+  es: EventSource,
+  onFraudUpdate: (data: import('../types').FraudScore) => void
+): void {
+  es.addEventListener('fraud_update', (e: MessageEvent) => {
+    try {
+      onFraudUpdate(JSON.parse(e.data));
+    } catch {
+      console.warn('SSE: error parseando fraud_update', e.data);
+    }
+  });
 }

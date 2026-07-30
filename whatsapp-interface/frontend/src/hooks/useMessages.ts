@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
-import { fetchMessages, sendMessage as apiSendMessage } from '../api/client';
+import { fetchMessages, sendMessage as apiSendMessage, createSSEConnection } from '../api/client';
 import type { Message } from '../types';
 
 export function useMessages(waId: string | null) {
@@ -8,6 +8,7 @@ export function useMessages(waId: string | null) {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const prevWaId = useRef<string | null>(null);
+  const esRef = useRef<EventSource | null>(null);
 
   const refresh = useCallback(async (id: string) => {
     try {
@@ -19,6 +20,7 @@ export function useMessages(waId: string | null) {
     }
   }, []);
 
+  // Carga inicial y recarga cuando cambia la conversación activa
   useEffect(() => {
     if (!waId) {
       setMessages([]);
@@ -31,6 +33,21 @@ export function useMessages(waId: string | null) {
     }
 
     refresh(waId).finally(() => setLoading(false));
+  }, [waId, refresh]);
+
+  // SSE: refresca mensajes cuando llegan nuevos (evento 'update' del backend)
+  useEffect(() => {
+    if (!waId) return;
+
+    const es = createSSEConnection(() => {
+      refresh(waId);
+    });
+    esRef.current = es;
+
+    return () => {
+      es.close();
+      esRef.current = null;
+    };
   }, [waId, refresh]);
 
   const sendMessage = useCallback(

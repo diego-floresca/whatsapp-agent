@@ -14,3 +14,15 @@ export interface Message {
   type: string;
   timestamp: string | null;
 }
+
+export interface FraudScore {
+  waId: string;
+  score: number;
+  max_score: number;
+  risk_level: 'bajo' | 'medio' | 'alto';
+  scam_type: string | null;
+  evidence: string | null;
+  reasoning: string | null;
+  updated_at: string | null;
+  alerted: boolean;
+}

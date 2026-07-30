@@ -101,3 +101,61 @@ export function subscribeToUsers(callback: () => void): () => void {
   });
   return unsubscribe;
 }
+
+// ── Fraud scores ──────────────────────────────────────────────────────────────
+
+export interface FraudScore {
+  waId: string;
+  score: number;
+  max_score: number;        // pico histórico — nunca baja aunque la conversación se resuelva
+  risk_level: 'bajo' | 'medio' | 'alto';
+  scam_type: string | null;
+  evidence: string | null;
+  reasoning: string | null;
+  updated_at: string | null;
+  alerted: boolean;
+}
+
+export async function getFraudScores(): Promise<FraudScore[]> {
+  const db = getDb();
+  const snapshot = await db.collection('fraud_scores').get();
+  return snapshot.docs.map((doc) => {
+    const data = doc.data();
+    return {
+      waId: doc.id,
+      score: data.score ?? 0,
+      max_score: data.max_score ?? data.score ?? 0,
+      risk_level: data.risk_level ?? 'bajo',
+      scam_type: data.scam_type ?? null,
+      evidence: data.evidence ?? null,
+      reasoning: data.reasoning ?? null,
+      updated_at: toISO(data.updated_at),
+      alerted: data.alerted ?? false,
+    };
+  });
+}
+
+export function subscribeToFraudScores(
+  callback: (waId: string, score: FraudScore) => void
+): () => void {
+  const db = getDb();
+  const unsubscribe = db.collection('fraud_scores').onSnapshot((snapshot) => {
+    snapshot.docChanges().forEach((change) => {
+      if (change.type === 'added' || change.type === 'modified') {
+        const data = change.doc.data();
+        callback(change.doc.id, {
+          waId: change.doc.id,
+          score: data.score ?? 0,
+          max_score: data.max_score ?? data.score ?? 0,
+          risk_level: data.risk_level ?? 'bajo',
+          scam_type: data.scam_type ?? null,
+          evidence: data.evidence ?? null,
+          reasoning: data.reasoning ?? null,
+          updated_at: toISO(data.updated_at),
+          alerted: data.alerted ?? false,
+        });
+      }
+    });
+  });
+  return unsubscribe;
+}

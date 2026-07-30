@@ -4,6 +4,7 @@ import {
   getMessages,
   toggleAI,
   saveHumanMessage,
+  getFraudScores,
 } from '../services/firestoreService';
 import { sendWhatsAppMessage } from '../services/metaService';
 import { addClient } from '../sse/sseManager';
@@ -22,6 +23,16 @@ router.get('/', async (_req: Request, res: Response) => {
   } catch (err) {
     console.error('Error al obtener conversaciones:', err);
     res.status(500).json({ error: 'Error al obtener conversaciones' });
+  }
+});
+
+router.get('/fraud-scores', async (_req: Request, res: Response) => {
+  try {
+    const scores = await getFraudScores();
+    res.json(scores);
+  } catch (err) {
+    console.error('Error al obtener fraud scores:', err);
+    res.status(500).json({ error: 'Error al obtener fraud scores' });
   }
 });
 

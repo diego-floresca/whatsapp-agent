@@ -1,11 +1,18 @@
-import type { Conversation } from '../types';
+import type { Conversation, FraudScore } from '../types';
 
 interface Props {
   conversations: Conversation[];
   loading: boolean;
   activeWaId: string | null;
   onSelect: (waId: string) => void;
+  fraudScores?: Map<string, FraudScore>;
 }
+
+const RISK_BADGE: Record<string, { label: string; color: string; dot: string }> = {
+  bajo:  { label: 'Bajo',  color: 'bg-green-700/60 text-green-300',  dot: 'bg-green-400' },
+  medio: { label: 'Medio', color: 'bg-yellow-700/60 text-yellow-300', dot: 'bg-yellow-400' },
+  alto:  { label: 'Alto',  color: 'bg-red-700/60 text-red-300',      dot: 'bg-red-500 animate-pulse' },
+};
 
 const STATUS_BADGE: Record<string, { label: string; color: string }> = {
   en_curso: { label: 'En curso', color: 'bg-blue-500' },
@@ -37,7 +44,7 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
-export function ConversationList({ conversations, loading, activeWaId, onSelect }: Props) {
+export function ConversationList({ conversations, loading, activeWaId, onSelect, fraudScores }: Props) {
   if (loading) {
     return (
       <div className="flex flex-col gap-1 p-3">
@@ -61,6 +68,8 @@ export function ConversationList({ conversations, loading, activeWaId, onSelect 
       {conversations.map((conv) => {
         const isActive = conv.waId === activeWaId;
         const badge = STATUS_BADGE[conv.status] ?? STATUS_BADGE['en_curso'];
+        const fraud = fraudScores?.get(conv.waId);
+        const risk = fraud ? RISK_BADGE[fraud.risk_level] : null;
 
         return (
           <button
@@ -76,8 +85,16 @@ export function ConversationList({ conversations, loading, activeWaId, onSelect 
             `}
           >
             {/* Avatar */}
-            <div className="shrink-0 w-9 h-9 rounded-full bg-[#2a2a2a] flex items-center justify-center text-xs font-semibold text-gray-300">
-              {getInitials(conv.name)}
+            <div className="relative shrink-0">
+              <div className="w-9 h-9 rounded-full bg-[#2a2a2a] flex items-center justify-center text-xs font-semibold text-gray-300">
+                {getInitials(conv.name)}
+              </div>
+              {risk && (
+                <span
+                  className={`absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full border border-[#141414] ${risk.dot}`}
+                  title={`Riesgo de fraude: ${risk.label}`}
+                />
+              )}
             </div>
 
             {/* Info */}
@@ -90,11 +107,18 @@ export function ConversationList({ conversations, loading, activeWaId, onSelect 
               </div>
               <div className="flex items-center justify-between gap-2 mt-0.5">
                 <span className="text-xs text-gray-500 truncate">{conv.phone_number}</span>
-                <span
-                  className={`shrink-0 text-[10px] font-medium px-1.5 py-0.5 rounded-full text-white ${badge.color}`}
-                >
-                  {badge.label}
-                </span>
+                <div className="flex items-center gap-1 shrink-0">
+                  {risk && (
+                    <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full ${risk.color}`}>
+                      {risk.label}
+                    </span>
+                  )}
+                  <span
+                    className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full text-white ${badge.color}`}
+                  >
+                    {badge.label}
+                  </span>
+                </div>
               </div>
             </div>
           </button>
